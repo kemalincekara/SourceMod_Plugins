@@ -148,4 +148,9 @@
 		"en"		"Disable Ads"
 		"tr"		"Reklamları Devredışı Bırak"
 	}
+	"ReklamEksen"
+	{
+		"en"		"Ad Axis Settings"
+		"tr"		"Reklam Eksen Ayarları"
+	}
 }

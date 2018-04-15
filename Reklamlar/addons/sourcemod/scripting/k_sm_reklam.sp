@@ -139,7 +139,7 @@ CreateTable()
 		return;
 	}
 	decl String:query[256];
-	Format(query, sizeof(query), "CREATE TABLE IF NOT EXISTS reklamlar (mapname VARCHAR(64),first REAL, second REAL, third REAL, models_vmt VARCHAR(128), reklamlar_name VARCHAR(128))");
+	Format(query, sizeof(query), "CREATE TABLE IF NOT EXISTS reklamlar (mapname VARCHAR(64),first REAL, second REAL, third REAL, models_vmt VARCHAR(128), reklam_name VARCHAR(128))");
 	SQL_TQuery(g_SQL, CallBackCreateTable, query, _, DBPrio_High);
 }
 
@@ -178,11 +178,11 @@ Save(client)
 	}
 	new index;
 	new Float:position[3];
-	decl String:sModel[128], String:reklamlar_name[128], String:mapname[32], String:query[256];
+	decl String:sModel[128], String:reklam_name[128], String:mapname[32], String:query[256];
 	ResetPack(pack);
 	ResetPack(pack2); 
 	ReadPackString(pack, sModel, 128);
-	ReadPackString(pack2, reklamlar_name, 128);
+	ReadPackString(pack2, reklam_name, 128);
 	GetCurrentMap(mapname, sizeof(mapname));
 	while (!IsStackEmpty(undo))
 	{
@@ -190,7 +190,7 @@ Save(client)
 		if (IsValidEdict(index))
 		{
 			GetEntPropVector(index, Prop_Send, "m_vecOrigin", position);
-			Format(query, sizeof(query), "INSERT INTO reklamlar (mapname, first, second, third, models_vmt, reklamlar_name) VALUES (\"%s\", \"%f\", \"%f\", \"%f\", \"%s\", \"%s\");", mapname, position[0], position[1], position[2], sModel, reklamlar_name);
+			Format(query, sizeof(query), "INSERT INTO reklamlar (mapname, first, second, third, models_vmt, reklam_name) VALUES (\"%s\", \"%f\", \"%f\", \"%f\", \"%s\", \"%s\");", mapname, position[0], position[1], position[2], sModel, reklam_name);
 			SQL_TQuery(g_SQL, SQL_DoNothing, query, _, DBPrio_High);
 		}
 	}
@@ -349,16 +349,16 @@ public ShowSelectClearMenu(Handle:owner, Handle:hndl, const String:error[], any:
 	new Handle:menu = CreateMenu(ShowSelectClearMenu_Handler);
 	SetMenuTitle(menu, "%t", "menu_title");
 	new Float:pos[3];
-	decl String:display[128], String:sBuffer[128], String:reklamlar_name[128], String:sModel[128];
+	decl String:display[128], String:sBuffer[128], String:reklam_name[128], String:sModel[128];
 	while (SQL_FetchRow(hndl))
 	{
 		pos[0] = SQL_FetchFloat(hndl, 1);
 		pos[1] = SQL_FetchFloat(hndl, 2);
 		pos[2] = SQL_FetchFloat(hndl, 3);
 		SQL_FetchString(hndl, 4, sModel, 128);
-		SQL_FetchString(hndl, 5, reklamlar_name, 128);
-		FormatEx(display, sizeof(display), "%s", reklamlar_name);
-		FormatEx(sBuffer, sizeof(sBuffer), "%f:%f:%f:%s:%s", pos[0], pos[1], pos[2], sModel, reklamlar_name);
+		SQL_FetchString(hndl, 5, reklam_name, 128);
+		FormatEx(display, sizeof(display), "%s", reklam_name);
+		FormatEx(sBuffer, sizeof(sBuffer), "%f:%f:%f:%s:%s", pos[0], pos[1], pos[2], sModel, reklam_name);
 		AddMenuItem(menu, sBuffer, display);
 	}
 	SetMenuExitBackButton(menu, true);
@@ -370,22 +370,22 @@ public ShowSelectClearMenu_Handler(Handle:menu, MenuAction:action, client, Item)
 	if(action == MenuAction_Select)
 	{
 		new Float:pos[3];
-		decl String:sInfo[PLATFORM_MAX_PATH], String:sBuffers[5][64], String:reklamlar_name[128], String:sModel[128], String:sBuffer[128];
+		decl String:sInfo[PLATFORM_MAX_PATH], String:sBuffers[5][64], String:reklam_name[128], String:sModel[128], String:sBuffer[128];
 		GetMenuItem(menu, Item, sInfo, sizeof(sInfo));
 		ExplodeString(sInfo, ":", sBuffers, 5, 64);
 		pos[0] = StringToFloat(sBuffers[0]);
 		pos[1] = StringToFloat(sBuffers[1]);
 		pos[2] = StringToFloat(sBuffers[2]);
 		strcopy(sModel, sizeof(sModel), sBuffers[3]);
-		strcopy(reklamlar_name, sizeof(reklamlar_name), sBuffers[4]);
-		FormatEx(sBuffer, sizeof(sBuffer), "%f:%f:%f:%s:%s", pos[0], pos[1], pos[2], sModel, reklamlar_name);
+		strcopy(reklam_name, sizeof(reklam_name), sBuffers[4]);
+		FormatEx(sBuffer, sizeof(sBuffer), "%f:%f:%f:%s:%s", pos[0], pos[1], pos[2], sModel, reklam_name);
 		decl Handle:menu777;
 		decl String:Delete_Text[36], String:Teleport_Text[36];
 		menu777 = CreateMenu(MainMenu777);
 		SetMenuExitBackButton(menu777, true);
 		Format(Teleport_Text, sizeof(Teleport_Text), "%t", "MenuItem2_1");
 		Format(Delete_Text, sizeof(Delete_Text), "%t", "MenuItem2_2");
-		SetMenuTitle(menu777, "%t", "menu_title2", reklamlar_name, pos[0], pos[1], pos[2], sModel);
+		SetMenuTitle(menu777, "%t", "menu_title2", reklam_name, pos[0], pos[1], pos[2], sModel);
 		AddMenuItem(menu777, sBuffer, Teleport_Text);
 		AddMenuItem(menu777, sBuffer, Delete_Text);
 		DisplayMenu(menu777, client, MENU_TIME_FOREVER);
@@ -424,14 +424,14 @@ public MainMenu777(Handle:menu, MenuAction:action, client, Item)
 				case 1:
 				{
 					new Float:pos[3];
-					decl String:query[256], String:sInfo[PLATFORM_MAX_PATH], String:sBuffers[5][64], String:reklamlar_name[128], String:sModel[128];
+					decl String:query[256], String:sInfo[PLATFORM_MAX_PATH], String:sBuffers[5][64], String:reklam_name[128], String:sModel[128];
 					GetMenuItem(menu, Item, sInfo, sizeof(sInfo));
 					ExplodeString(sInfo, ":", sBuffers, 5, 64);
 					pos[0] = StringToFloat(sBuffers[0]);
 					pos[1] = StringToFloat(sBuffers[1]);
 					pos[2] = StringToFloat(sBuffers[2]);
 					strcopy(sModel, sizeof(sModel), sBuffers[3]);
-					strcopy(reklamlar_name, sizeof(reklamlar_name), sBuffers[4]);
+					strcopy(reklam_name, sizeof(reklam_name), sBuffers[4]);
 					Format(query, sizeof(query), "DELETE FROM reklamlar WHERE first = '%f'", pos[0]);
 					SQL_TQuery(g_SQL, SQL_DoNothing, query, _, DBPrio_High);
 					CPrintToChat(client, "%t", "Success_Delete");
@@ -454,11 +454,18 @@ reklamlarMenuEnd(iClient)
 	}
 	decl String:Save_Text[36], String:Cancel_Text[36];
 	new Handle:menu = CreateMenu(reklamlarMenuHandler);
-	SetMenuTitle(menu, "%t", "menu_title3");
+	SetMenuTitle(menu, "%t", "ReklamEksen");
+	SetMenuPagination(menu, MENU_NO_PAGINATION);
 	Format(Save_Text, sizeof(Save_Text), "%t", "MenuItem3_1");
 	Format(Cancel_Text, sizeof(Cancel_Text), "%t", "MenuItem3_2");
-	AddMenuItem(menu, "", Save_Text);
-	AddMenuItem(menu, "", Cancel_Text);
+	AddMenuItem(menu, "+X", "+X");
+	AddMenuItem(menu, "-X", "-X");
+	AddMenuItem(menu, "+Y", "+Y");
+	AddMenuItem(menu, "-Y", "-Y");
+	AddMenuItem(menu, "+Z", "+Z");
+	AddMenuItem(menu, "-Z", "-Z\n -----------------------------");
+	AddMenuItem(menu, "save", Save_Text);
+	AddMenuItem(menu, "cancel", Cancel_Text);
 	SetMenuExitBackButton(menu, true);
 	DisplayMenu(menu, iClient, MENU_TIME_FOREVER);
 }
@@ -471,13 +478,38 @@ public reklamlarMenuHandler(Handle:menu, MenuAction:action, iClient, Item)
 		{
 			switch(Item)
 			{
-				case 0:
+				case 0, 1, 2, 3, 4, 5:
+				{
+					// KEMAL
+					new index;
+					if(!IsStackEmpty(undo) && PopStackCell(undo, index))
+					{
+						if (IsValidEdict(index))
+						{
+							new Float:position[3];
+							GetEntPropVector(index, Prop_Send, "m_vecOrigin", position);
+							switch(Item)
+							{
+								case 0: position[0] = position[0] + 10;
+								case 1: position[0] = position[0] - 10;
+								case 2: position[1] = position[1] + 10;
+								case 3: position[1] = position[1] - 10;
+								case 4: position[2] = position[2] + 10;
+								case 5: position[2] = position[2] - 10;
+							}
+							SetEntPropVector(index, Prop_Send, "m_vecOrigin", position);
+							PushStackCell(undo, index);
+							reklamlarMenuEnd(iClient);
+						}
+					}
+				}
+				case 6:
 				{
 					InChatName[iClient] = true;
 					CPrintToChat(iClient, "%t", "Print_Name_In_Chat");
 					Command_Reklam(iClient, 0);
 				}
-				case 1:
+				case 7:
 				{
 					Undo(iClient);
 					DisplayMenu(g_hMenu, iClient, MENU_TIME_FOREVER);
@@ -544,7 +576,7 @@ public GlobalMenuHandler(Handle:hMenu, MenuAction:action, iClient, Item)
 		Createreklamlar(position, sModel);
 		reklamlarMenuEnd(iClient);
 		pack = CreateDataPack(); 
-		WritePackString(pack, sModel); 
+		WritePackString(pack, sModel);
 	}
 	else if(action == MenuAction_Cancel)
 	{
@@ -565,7 +597,7 @@ Createreklamlar(Float:position[3],const String:sModel[], bool:pushstack=true)
 		DispatchKeyValue(sprite, "rendercolor", "255 255 255");
 		DispatchKeyValue(sprite, "model", sModel);
 		DispatchSpawn(sprite);
-		position[2] = position[2] + 50.0;
+		//position[2] = position[2] + 50.0;
 		TeleportEntity(sprite, position, NULL_VECTOR, NULL_VECTOR);
 		
 		if (pushstack)
@@ -582,6 +614,7 @@ TraceEye(client, Float:pos[3])
 	GetClientEyeAngles(client, vAngles);
 	TR_TraceRayFilter(vOrigin, vAngles, MASK_SHOT, RayType_Infinite, TraceEntityFilterPlayer);
 	if(TR_DidHit(INVALID_HANDLE)) TR_GetEndPosition(pos, INVALID_HANDLE);
+	pos[2] = pos[2] + 100;
 	return;
 }
 
