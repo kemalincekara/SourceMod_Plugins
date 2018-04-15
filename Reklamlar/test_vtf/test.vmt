@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "reklama/test.vtf"
+	$translucent 1
+}

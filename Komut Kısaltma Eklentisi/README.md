@@ -4,7 +4,10 @@
 
 **Oyun:** Counter-Strike Source
 
-**Gereklilik:** SourceMod Admin'i veya Mani Admin Plugin yetkisi bulunanlar eklentiyi kullanabilir.
+**Yetki:** SourceMod Admin'i veya Mani Admin Plugin yetkisi bulunanlar eklentiyi kullanabilir.
+
+**Zorunlu Yüklenmesi Gereken Eklenti:** [Çevrimiçi Admin Listesi](https://github.com/kemalincekara/SourceMod_Plugins/tree/master/%C3%87evrimi%C3%A7i%20Admin%20Listesi "sm_admins")
+
 ***
 
 ### Kullanılabilir Konsol Komutlar

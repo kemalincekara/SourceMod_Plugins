@@ -1,0 +1,151 @@
+//{default}
+//{green}
+//{lightgreen}
+//{red}
+//{blue}
+//{olive}"
+"Phrases"
+{
+	///////////////////
+	///////CHAT////////
+	///////////////////
+	"Delete_All_On_Map"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}Removed all advertising on this map."
+		"tr" "{green}[{red}REKLAM{green}] {default}Bu haritadaki tüm reklamlar kaldırıldı."
+	}
+	"Round_Reload"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}Round has been restarted. Try again."
+		"tr" "{green}[{red}REKLAM{green}] {default}Round yeniden başlatıp tekrar deneyiniz."
+	}
+	"Save"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}Advertise successfully saved."
+		"tr" "{green}[{red}REKLAM{green}] {default}Reklam başarıyla kaydedildi."
+	}
+	"Delete"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}Advertise successfully removed."
+		"tr" "{green}[{red}REKLAM{green}] {default}Reklam başarıyla kaldırıldı."
+	}
+	"No_Point"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}This map has no advertising."
+		"tr" "{green}[{red}REKLAM{green}] {default}Bu haritanın reklamı yok."
+	}
+	"Success_Delete"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}You delete the selected ads you."
+		"tr" "{green}[{red}REKLAM{green}] {default}Seçtiğiniz reklam silindi."
+	}
+	"Print_Name_In_Chat"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}Enter the chat name for this advertisement."
+		"tr" "{green}[{red}REKLAM{green}] {default}Sohbet'ten reklam ismini yaziniz."
+	}
+	"Check_Size"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}Name of advertising should be more than 3 char."
+		"tr" "{green}[{red}REKLAM{green}] {default}Reklam ismi 3'ten fazla olmalıdır."
+	}
+	"Success_Teleport"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}You have been teleported."
+		"tr" "{green}[{red}REKLAM{green}] {default}Işınladınız."
+	}
+	"Deny_Teleport"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}You're dead, closed access to the teleport."
+		"tr" "{green}[{red}REKLAM{green}] {default}Ölü olduğunuz için teleport erişimi kapalı."
+	}
+	"ReklamGizlenecekBilgi"
+	{
+		"en" "{green}[{red}REKLAM{green}] {default}The ads will be hidden when Round is restarted."
+		"tr" "{green}[{red}REKLAM{green}] {default}Round yeniden basladiginda reklamlar gizlenecek."
+	}
+	///////////////////
+	///////MENU////////
+	///////////////////
+	"menu_title"
+	{
+		"en"		"Choose to remove ads:"
+		"tr"		"Kaldırmak istediğiniz reklamı seçiniz:"
+	}
+	"menu_title2"
+	{
+		"#format"	"{1:s},{2:f},{3:f},{4:f},{5:s}"
+		"en"		"Information on the selected advertising\n \nName:{1}\nAxis х:{2}\nAxis y:{3}\nAxis z:{4}\nModel: {5}\n"
+		"tr"		"Seçilen Reklamın Bilgileri :\n \nName:{1}\nAxis х:{2}\nAxis y:{3}\nAxis z:{4}\nModel: {5}\n"
+	}
+	"MenuItem2_1"
+	{
+		"en"		"Teleport to point"
+		"tr"		"Nokta Işınla"
+	}
+	"MenuItem2_2"
+	{
+		"en"		"Delete"
+		"tr"		"Sil"
+	}
+	"menu_title3"
+	{
+		"en"		"Create ads:"
+		"tr"		"Reklam Oluştur:"
+	}
+	"MenuItem3_1"
+	{
+		"en"		"Save"
+		"tr"		"Kaydet"
+	}
+	"MenuItem3_2"
+	{
+		"en"		"Cancel"
+		"tr"		"İptal"
+	}
+	"MainMenu1"
+	{
+		"en"		"Advertising Management"
+		"tr"		"Reklam Yönetimi"
+	}
+	"MainMenu2"
+	{
+		"en"		"Create ads"
+		"tr"		".Reklam Oluştur"
+	}
+	"MainMenu3"
+	{
+		"en"		"Remove after list"
+		"tr"		"Listeden Sil"
+	}
+	"MainMenu4"
+	{
+		"en"		"Remove all advertising on the map"
+		"tr"		"Tümünü Sil Haritadan"
+	}
+	"Evet"
+	{
+		"en"		"Yes"
+		"tr"		"Evet"
+	}
+	"Hayir"
+	{
+		"en"		"No"
+		"tr"		"Hayır"
+	}
+	"SilenecekUyari"
+	{
+		"en"		"All Ads Will be Deleted!"
+		"tr"		"Tüm Reklamlar Silenecektir!"
+	}
+	"ReklamlarEtkinlestir"
+	{
+		"en"		"Enable Ads"
+		"tr"		"Reklamları Etkinleştir"
+	}
+	"ReklamlarDevredisi"
+	{
+		"en"		"Disable Ads"
+		"tr"		"Reklamları Devredışı Bırak"
+	}
+}
