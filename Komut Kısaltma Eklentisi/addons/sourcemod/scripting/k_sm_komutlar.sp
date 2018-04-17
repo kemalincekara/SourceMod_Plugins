@@ -69,10 +69,7 @@ public YukleKomutlar()
 		CloseHandle(hFile);
 	}
 	else
-	{
 		PrintToServer("Dosya Bulunamadi : %s", CONFIG_DOSYA);
-		//SetFailState("Dosya Bulunamadi : %s", CONFIG_DOSYA);
-	}
 }
 
 public Action:KOMUTLAR(int client, int args)
@@ -184,12 +181,12 @@ public void KOMUTEKLE_NextFrame(any:data)
 		BuildPath(Path_SM, configFile, sizeof(configFile), CONFIG_DOSYA);
 		new Handle:file = OpenFile(configFile, "at+");
 		//WriteFileLine(file, "");
-		//WriteFileLine(file, "//Tarih : %s | Saat : %s | Bu Eklenti TERMINATOR ☪ Tarafindan UniTy Clani İcin Yapilmistir. ", tarih, saat);
+		//WriteFileLine(file, "//Tarih : %s | Saat : %s | Bu Eklenti TERMINATOR ☪ Tarafindan UniTy Clani icin Yapilmistir. ", tarih, saat);
 		WriteFileLine(file, "\"!%s\" %s", kisakomut, komutlar);
 		PrintToChat(client, "\x03[\x04SM KOMUTLAR\x03] Komut Eklendi.");
 		CloseHandle(file);
 		YukleKomutlar();
-		FakeClientCommand(client, "sm_ky");
+		FakeClientCommandEx(client, "sm_ky");
 	}
 	CloseHandle(data);
 }
@@ -374,6 +371,6 @@ public void KomutCalistir_NextFrame(any:data)
 	if(IsAdminValid(client))
 	{
 		PrintToChat(client, "\x03[\x04SM KOMUTLAR\x03] Uygulandı: \x04%s", komut);
-		ClientCommand(client, komut);
+		FakeClientCommandEx(client, komut);
 	}
 }

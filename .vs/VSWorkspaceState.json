@@ -1,11 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Reklamlar",
+    "\\Komut Kısaltma Eklentisi\\addons\\sourcemod",
+    "\\Komut Kısaltma Eklentisi\\addons\\sourcemod\\scripting",
     "\\Reklamlar\\addons\\sourcemod",
-    "\\Reklamlar\\addons\\sourcemod\\data",
-    "\\Reklamlar\\addons\\sourcemod\\data\\sqlite"
+    "\\Reklamlar\\addons\\sourcemod\\data\\sqlite",
+    "\\Reklamlar\\addons\\sourcemod\\scripting",
+    "\\Çevrimiçi Admin Listesi\\addons\\sourcemod",
+    "\\Çevrimiçi Admin Listesi\\addons\\sourcemod\\scripting",
+    "\\Çevrimiçi Admin Listesi\\addons\\sourcemod\\scripting\\include"
   ],
-  "SelectedNode": "\\Reklamlar\\addons",
+  "SelectedNode": "\\Çevrimiçi Admin Listesi",
   "PreviewInSolutionExplorer": false
 }
