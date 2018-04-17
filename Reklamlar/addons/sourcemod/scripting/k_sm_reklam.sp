@@ -24,17 +24,12 @@ public Plugin:myinfo =
 	name = "Reklamlar",
 	author = "UniTy . TERMINATOR ☪",
 	description = "Reklamlar",
-	version = "1.4",
+	version = "1.5",
 	url = "http://www.kemalincekara.tk"
 }
 
 public OnPluginStart() 
 {
-	if (!LibraryExists("k_sm_admins"))
-	{
-		SetFailState("[SM] k_sm_admins Plugini Gerekli");
-		return;
-	}
 	reklam_acik = CreateConVar("sm_reklam_acik", "1", "Reklamlar Acik = 1, Kapali = 1", FCVAR_NOTIFY|FCVAR_REPLICATED);
 	AutoExecConfig(true, "k_sm_reklam");
 	AddCommandListener(Say, "say"); 
@@ -47,6 +42,12 @@ public OnPluginStart()
 	
 	RegConsoleCmd("sm_reklam", Command_Reklam, "Reklam Yonetimi");
 	HookConVarChange(reklam_acik, Reklam_Acik_Changed);
+}
+
+public void OnAllPluginsLoaded()
+{
+	if (!LibraryExists("k_sm_admins"))
+		SetFailState("[SM REKLAMLAR] k_sm_admins.smx PLUGIN GEREKLI");
 }
 
 public void Reklam_Acik_Changed(ConVar convar, const char[] oldValue, const char[] newValue)
@@ -507,7 +508,6 @@ public reklamlarMenuHandler(Handle:menu, MenuAction:action, iClient, Item)
 				{
 					InChatName[iClient] = true;
 					CPrintToChat(iClient, "%t", "Print_Name_In_Chat");
-					Command_Reklam(iClient, 0);
 				}
 				case 7:
 				{

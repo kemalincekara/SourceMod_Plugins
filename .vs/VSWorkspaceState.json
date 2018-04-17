@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Reklamlar",
+    "\\Reklamlar\\addons\\sourcemod",
+    "\\Reklamlar\\addons\\sourcemod\\data",
+    "\\Reklamlar\\addons\\sourcemod\\data\\sqlite"
   ],
+  "SelectedNode": "\\Reklamlar\\addons",
   "PreviewInSolutionExplorer": false
 }

@@ -1,7 +1,7 @@
-#if defined _k_sm_admins_included_
+#if defined _k_sm_admins_included
   #endinput
 #endif
-#define _k_sm_admins_included_
+#define _k_sm_admins_included
 
 #define REQUIRE_PLUGIN
 #define PLUGIN_VERSION_CORE "1.0.0.0"

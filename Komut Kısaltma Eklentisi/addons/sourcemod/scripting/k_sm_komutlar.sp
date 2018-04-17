@@ -17,23 +17,24 @@ public Plugin:myinfo =
 	name = "Komut Kisaltma Eklentisi",
 	author = "UniTy . TERMINATOR ☪",
 	description = "Komut Kisaltma Eklentisi",
-	version = "1.2",
+	version = "1.3",
 	url = "http://www.kemalincekara.tk/"
 };
  
 public void OnPluginStart()
 {
-	if (!LibraryExists("k_sm_admins"))
-	{
-		SetFailState("[SM] k_sm_admins Plugini Gerekli");
-		return;
-	}
 	RegConsoleCmd("sm_komutlar", KOMUTLAR, "Kisaltilmis Komutlar", 0);
 	RegConsoleCmd("sm_komutlaryenile", KOMUTYENILE, "Komutlari Yenile", 0);
 	RegConsoleCmd("sm_ky", KOMUTYENILE, "Komutlari Yenile", 0);
 	RegConsoleCmd("sm_komutekle", KOMUTEKLE, "Oyun Ici Komut Ekle", 0);
 	RegConsoleCmd("sm_komutsil", KOMUTSIL, "Oyun Ici Komut Sil", 0);
 	YukleKomutlar();
+}
+
+public void OnAllPluginsLoaded()
+{
+	if (!LibraryExists("k_sm_admins"))
+		SetFailState("[SM KOMUTLAR] k_sm_admins.smx PLUGIN GEREKLI");
 }
 
 public YukleKomutlar()
@@ -90,7 +91,7 @@ public void KOMUTLAR_NextFrame(any:client)
 		PrintToChat(client, "\x03[\x04SM KOMUTLAR\x03] \x01!komutsil \"KisaKomut\"");
 		PrintToChat(client, "\x03[\x04SM KOMUTLAR\x03] \x01!komutlaryenile veya !ky");
 
-		new Handle:menu = CreateMenu(AdminSoundsMenuHandler, MENU_ACTIONS_DEFAULT);
+		new Handle:menu = CreateMenu(AdminSoundsMenuHandler, MenuAction_Select | MenuAction_Cancel);
 		SetMenuTitle(menu, "Kısa Komutlar :");
 		PrintToConsole(client, "Kısa Komutlar :");
 		new i;
@@ -109,7 +110,7 @@ public AdminSoundsMenuHandler(Handle:menu, MenuAction:action, client, param2)
 {
 	if (action == MenuAction_Select)
 	{
-		KOMUTLAR(client, 0);
+		DisplayMenuAtItem(menu, client, param2, 20);
 		if(StrContains(g_komutUygula[param2], "*", false) != -1)
 		{
 			PrintToChat(client, "\x03[\x04SM KOMUTLAR\x03] '%s' kısa komut için parametre belirtilmedi.", g_komutGorunumIsim[param2]);
@@ -118,7 +119,7 @@ public AdminSoundsMenuHandler(Handle:menu, MenuAction:action, client, param2)
 		else
 			KomutCalistir(client, GetName(client), g_komutGorunumIsim[param2], g_komutUygula[param2]);
 	}
-	else if (action == MenuAction_Cancel || action == MenuAction_End)
+	else if (action == MenuAction_Cancel)
 		CloseHandle(menu);
 }
 

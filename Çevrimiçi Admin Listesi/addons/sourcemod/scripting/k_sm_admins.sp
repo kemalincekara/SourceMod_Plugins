@@ -125,14 +125,8 @@ public Action Command_Admins(int client, int args)
 		}
 		CloseHandle(menu);
 	}
-	else if (action == MenuAction_Cancel)
-	{
+	else if (action == MenuAction_Cancel || action == MenuAction_End)
 		CloseHandle(menu);
-	}
-	else if (action == MenuAction_End)
-	{
-		CloseHandle(menu);
-	}
 }
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
