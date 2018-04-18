@@ -371,6 +371,6 @@ public void KomutCalistir_NextFrame(any:data)
 	if(IsAdminValid(client))
 	{
 		PrintToChat(client, "\x03[\x04SM KOMUTLAR\x03] Uygulandı: \x04%s", komut);
-		FakeClientCommandEx(client, komut);
+		ClientCommand(client, komut);
 	}
 }
