@@ -7,3 +7,5 @@
 3. [Para Eklentisi](https://github.com/kemalincekara/SourceMod_Plugins/tree/master/Para%20Eklentisi "sm_para")
 
 4. [Reklam Yönetimi](https://github.com/kemalincekara/SourceMod_Plugins/tree/master/Reklamlar "sm_reklam")
+
+5. [Oyun Modu Yöneticisi](https://github.com/kemalincekara/SourceMod_Plugins/tree/master/Oyun%20Modu%20Y%C3%B6neticisi "sm_oyunmod")

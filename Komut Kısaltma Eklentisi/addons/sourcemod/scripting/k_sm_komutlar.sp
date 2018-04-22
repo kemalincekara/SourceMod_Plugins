@@ -15,7 +15,7 @@ new g_komutNum;
 public Plugin:myinfo =
 {
 	name = "Komut Kisaltma Eklentisi",
-	author = "UniTy . TERMINATOR ☪",
+	author = "ℂ⋆İSTİKLAL|TERMINATOR",
 	description = "Komut Kisaltma Eklentisi",
 	version = "1.3",
 	url = "http://www.kemalincekara.tk/"

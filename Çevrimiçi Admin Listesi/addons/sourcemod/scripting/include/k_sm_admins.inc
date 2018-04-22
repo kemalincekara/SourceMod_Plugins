@@ -4,9 +4,9 @@
 #define _k_sm_admins_included
 
 #define REQUIRE_PLUGIN
-#define PLUGIN_VERSION_CORE "1.0.0.0"
+#define PLUGIN_VERSION_CORE "1.0.0.1"
 
-native bool IsAdminValid(int client);
+native bool IsAdminValid(int client, bool serverAllow = true);
 native bool IsSMAdmin(int client)
 native bool IsManiAdmin(int client)
 

@@ -27,7 +27,7 @@ new Handle:AdminListMenu = INVALID_HANDLE;
 public Plugin:myinfo = 
 {
 	name = "Adminleri Listele",
-	author = "UniTy . TERMINATOR ☪",
+	author = "ℂ⋆İSTİKLAL|TERMINATOR",
 	description = "Admin listesini gosterir",
 	version = PLUGIN_VERSION_CORE,
 	url = "http://www.kemalincekara.tk"
@@ -159,7 +159,8 @@ public void AdminCacheClear()
 public int Native_IsAdminValid(Handle plugin, int numParams)
 {
 	int client = GetNativeCell(1);
-	return (IsClientValid(client) && (IsSMAdmin(client) || IsManiAdmin(client)));
+	bool serverAllow = GetNativeCell(2);
+	return (serverAllow && client == 0) || (IsClientValid(client) && (IsSMAdmin(client) || IsManiAdmin(client)));
 }
 
 public int Native_IsSMAdmin(Handle plugin, int numParams)

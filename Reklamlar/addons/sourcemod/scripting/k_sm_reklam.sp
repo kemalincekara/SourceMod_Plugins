@@ -22,7 +22,7 @@ ConVar reklam_acik;
 public Plugin:myinfo = 
 {
 	name = "Reklamlar",
-	author = "UniTy . TERMINATOR ☪",
+	author = "ℂ⋆İSTİKLAL|TERMINATOR",
 	description = "Reklamlar",
 	version = "1.5",
 	url = "http://www.kemalincekara.tk"
