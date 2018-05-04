@@ -3,8 +3,7 @@
 #endif
 #define _k_sm_admins_included
 
-#define REQUIRE_PLUGIN
-#define PLUGIN_VERSION_CORE "1.0.0.1"
+#define PLUGIN_VERSION_CORE "1.0.0.2"
 
 native bool IsAdminValid(int client, bool serverAllow = true);
 native bool IsSMAdmin(int client)

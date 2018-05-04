@@ -1,8 +1,10 @@
-## Çevrimiçi Admin Listesi [SourceMod & Mani Admin Plugin]
+## [Core] Çevrimiçi Admin Listesi [SourceMod & Mani Admin Plugin]
 
 **Açıklama:** Oyunda çevrimiçi olan adminleri listeler
 
 **Oyun:** Counter-Strike Source
+
+**Önemli Not:** Çekirdek eklentidir. Diğer eklentilerin çalışması için gereklidir.
 
 ***
 

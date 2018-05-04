@@ -27,10 +27,10 @@ new Handle:AdminListMenu = INVALID_HANDLE;
 public Plugin:myinfo = 
 {
 	name = "Adminleri Listele",
-	author = "ℂ⋆İSTİKLAL|TERMINATOR",
+	author = "☪İSTİKLAL☪|TERMINATOR",
 	description = "Admin listesini gosterir",
 	version = PLUGIN_VERSION_CORE,
-	url = "http://www.kemalincekara.tk"
+	url = "https://www.github.com/kemalincekara"
 }
 
 public OnPluginStart()
@@ -46,7 +46,7 @@ public Action Command_Admins(int client, int args)
 	new count = 0;
 	int cVarEnabled	= GetConVarInt(AdminListEnabled);
 	int cVarMode	= GetConVarInt(AdminListMode);
-	bool isAdminClient = IsAdminValid(client);
+	bool isAdminClient = IsAdminValid(client, false);
 	if(isAdminClient)
 		PrintToChat(client, "\x04sm_admins_on %d, sm_admins_mode %d", cVarEnabled, cVarMode);
 	if(cVarEnabled == 1 || isAdminClient)
@@ -65,14 +65,14 @@ public Action Command_Admins(int client, int args)
 						AddMenuItem(AdminListMenu, "#menu1", "!admins Etkinleştir\n -----------------------------");
 					// AddMenuItem(AdminListMenu, "#menu2", "!admins Görüntüleme Modu Değiştir\n -----------------------------");
 				}
-				for(new i = 1; i <= GetMaxClients(); i++)
+				for(int i = 1; i <= MaxClients; i++)
 				{
-					if(IsAdminValid(i))
+					if(IsAdminValid(i, false))
 					{
 						AdminName = GetName(i);
 						AddMenuItem(AdminListMenu, AdminName, AdminName, ITEMDRAW_DISABLED);
 						count++;
-					} 
+					}
 				}
 				SetMenuTitle(AdminListMenu, "Çevrimiçi Admin [%d]:", count);
 				if(count == 0)
@@ -83,9 +83,9 @@ public Action Command_Admins(int client, int args)
 			case 2:
 			{
 				decl String:AdminNames[MAXPLAYERS+1][MAX_NAME_LENGTH+1];
-				for(new i = 1 ; i <= GetMaxClients();i++)
+				for(int i = 1 ; i <= MaxClients; i++)
 				{
-					if(IsAdminValid(i))
+					if(IsAdminValid(i, false))
 					{
 						AdminNames[count] = GetName(i);
 						count++;
@@ -103,7 +103,7 @@ public Action Command_Admins(int client, int args)
 {
 	if (action == MenuAction_Select)
 	{
-		if(IsAdminValid(client))
+		if(IsAdminValid(client, false))
 		{
 			char info[32];
 			GetMenuItem(menu, param2, info, sizeof(info));
@@ -295,6 +295,8 @@ public int Native_IsManiAdmin(Handle plugin, int numParams)
 				info.Yaz("Steam", steamClient);
 				info.Yaz("IpAdresi", ipAdresiClient);
 				maniAdminlikler.SetValue(steamClient, info, true);
+				//DumpAdminCache(AdminCache_Admins, true);
+				//SetSourceModAdminFlag(client);
 				delete kv;
 				return true;
 			}
@@ -302,4 +304,35 @@ public int Native_IsManiAdmin(Handle plugin, int numParams)
 	}
 	delete kv;
 	return false;
+}
+
+public void SetSourceModAdminFlag(int client)
+{
+	if(!IsClientValid(client) || !IsManiAdmin(client))
+		return;
+	if(GetUserAdmin(client) == INVALID_ADMIN_ID) 
+	{ 
+		new flags = GetUserFlagBits(client); 
+		if(!(flags & ADMFLAG_RESERVATION))
+		{ 
+			flags |= ADMFLAG_RESERVATION; 
+			SetUserFlagBits(client, flags);
+		}
+	}
+}
+public void OnRebuildAdminCache(AdminCachePart part)
+{
+	if (part == AdminCache_Admins)
+		for (int client = 1; client <= MaxClients; client++)
+			SetSourceModAdminFlag(client);
+}
+
+public void OnClientPostAdminCheck(int client)
+{
+	SetSourceModAdminFlag(client);
+}
+
+public void OnClientConnected(int client)
+{
+	SetSourceModAdminFlag(client);
 }

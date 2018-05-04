@@ -7,10 +7,10 @@
 public Plugin:myinfo = 
 {
 	name = "Oyun Modu Yoneticisi",
-	author = "ℂ⋆İSTİKLAL|TERMINATOR",
+	author = "☪İSTİKLAL☪|TERMINATOR",
 	description = "Cok modlu bir sunucuda oyun modunu otomatiklestirmek icin bir eklenti.",
 	version = "1.3.0",
-	url = "http://www.kemalincekara.tk"
+	url = "https://www.github.com/kemalincekara"
 };
 
 new Handle:hGlobalConfig;
@@ -281,6 +281,8 @@ public void KeyValuesAddonsHelper(const Handle hConfig, const char[] key, bool I
 					CreateDirectory("addons/disabled", 755);
 				if(!DirExists("addons/disabled/metamod"))
 					CreateDirectory("addons/disabled/metamod", 755);
+				if(!DirExists("addons/disabled/extensions"))
+					CreateDirectory("addons/disabled/extensions", 755);
 				KvGetString(hConfig, NULL_STRING, sAddons, sizeof(sAddons));
 				Format(sAddonsPath, sizeof(sAddonsPath), "addons/%s", sAddons);
 				Format(sDisabledAddonsPath, sizeof(sDisabledAddonsPath), "addons/disabled/%s", sAddons);

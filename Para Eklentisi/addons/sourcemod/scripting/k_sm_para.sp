@@ -8,10 +8,10 @@ new g_iAccount = -1;
 public Plugin:myinfo =
 {
 	name = "!Para Eklentisi",
-	author = "ℂ⋆İSTİKLAL|TERMINATOR",
+	author = "☪İSTİKLAL☪|TERMINATOR",
 	description = "HER ROUND PARA VERİR",
 	version = "1.0.0",
-	url = "http://www.kemalincekara.tk"
+	url = "https://www.github.com/kemalincekara"
 };
 
 public OnPluginStart()

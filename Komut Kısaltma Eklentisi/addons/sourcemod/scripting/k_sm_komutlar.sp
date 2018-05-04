@@ -15,10 +15,10 @@ new g_komutNum;
 public Plugin:myinfo =
 {
 	name = "Komut Kisaltma Eklentisi",
-	author = "ℂ⋆İSTİKLAL|TERMINATOR",
+	author = "☪İSTİKLAL☪|TERMINATOR",
 	description = "Komut Kisaltma Eklentisi",
 	version = "1.3",
-	url = "http://www.kemalincekara.tk/"
+	url = "https://www.github.com/kemalincekara"
 };
  
 public void OnPluginStart()

@@ -296,8 +296,8 @@ stock CFormat(String:szMessage[], maxlength, author=NO_INDEX)
 				/* If found another team color tag throw error */
 				else
 				{
-					//ReplaceString(szMessage, maxlength, CTag[i], "");
-					ThrowError("Using two team colors in one message is not allowed");
+					ReplaceString(szMessage, maxlength, CTag[i], "");
+					//ThrowError("Using two team colors in one message is not allowed");
 				}
 			}
 			

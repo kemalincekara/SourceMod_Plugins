@@ -22,10 +22,10 @@ ConVar reklam_acik;
 public Plugin:myinfo = 
 {
 	name = "Reklamlar",
-	author = "ℂ⋆İSTİKLAL|TERMINATOR",
+	author = "☪İSTİKLAL☪|TERMINATOR",
 	description = "Reklamlar",
 	version = "1.5",
-	url = "http://www.kemalincekara.tk"
+	url = "https://www.github.com/kemalincekara"
 }
 
 public OnPluginStart() 
