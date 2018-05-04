@@ -10,4 +10,4 @@
 
 5. [Oyun Modu Yöneticisi](https://github.com/kemalincekara/SourceMod_Plugins/tree/master/Oyun%20Modu%20Y%C3%B6neticisi "sm_oyunmod")
 
-6. [Sunucu Yönlendirici](https://github.com/kemalincekara/SourceMod_Plugins/tree/master/Oyun%20Modu%20Y%C3%B6neticisi "sm_sunucu")
+6. [Sunucu Yönlendirici](https://github.com/kemalincekara/SourceMod_Plugins/tree/master/Sunucu%20Y%C3%B6nlendirici "sm_sunucu")
