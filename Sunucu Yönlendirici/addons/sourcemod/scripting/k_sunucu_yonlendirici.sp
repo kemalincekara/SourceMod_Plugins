@@ -128,7 +128,7 @@ public void ShowDialog(int client, int serverNum)
 	new Handle:kvheader = CreateKeyValues("header");
 	KvSetString(kvheader, "title", "F3 BASARAK SUNUCU BAGLANTISINI KABUL EDIN.");
 	KvSetColor(kvheader, "color", 255, 255, 0, 255); // Yesil
-	KvSetString(kvheader, "time", "30");
+	KvSetString(kvheader, "time", "10");
 	KvSetNum(kvheader, "level", 1);
 	CreateDialog(client, kvheader, DialogType_Msg);
 	CloseHandle(kvheader);
@@ -137,7 +137,7 @@ public void ShowDialog(int client, int serverNum)
 	Format(address, MAX_STR_LEN, "%s:%i", serverAddress[serverNum], serverPort[serverNum]);
 	new Handle:kv = CreateKeyValues("menu");
 	KvSetString(kv, "title", address);
-	KvSetString(kv, "time", "30");
+	KvSetString(kv, "time", "10");
 	CreateDialog(client, kv, DialogType_AskConnect);
 	CloseHandle(kv);
 }
@@ -146,7 +146,7 @@ public void ShowDialog(int client, int serverNum)
 public void SunucuCfgYukle()
 {
 	new String:path[PLATFORM_MAX_PATH];
-	BuildPath(Path_SM, path, sizeof(path), "configs/k_sunucu_yonlendirme.cfg" );
+	BuildPath(Path_SM, path, sizeof(path), "configs/k_sunucu_yonlendirici.cfg" );
 	KeyValues kv = new KeyValues("Sunucular");
 	if (!kv.ImportFromFile(path) || !kv.GotoFirstSubKey())
 	{
