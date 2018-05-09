@@ -281,8 +281,10 @@ public void KeyValuesAddonsHelper(const Handle hConfig, const char[] key, bool I
 					CreateDirectory("addons/disabled", 755);
 				if(!DirExists("addons/disabled/metamod"))
 					CreateDirectory("addons/disabled/metamod", 755);
-				if(!DirExists("addons/disabled/extensions"))
-					CreateDirectory("addons/disabled/extensions", 755);
+				if(!DirExists("addons/disabled/sourcemod"))
+					CreateDirectory("addons/disabled/sourcemod", 755);
+				if(!DirExists("addons/disabled/sourcemod/extensions"))
+					CreateDirectory("addons/disabled/sourcemod/extensions", 755);
 				KvGetString(hConfig, NULL_STRING, sAddons, sizeof(sAddons));
 				Format(sAddonsPath, sizeof(sAddonsPath), "addons/%s", sAddons);
 				Format(sDisabledAddonsPath, sizeof(sDisabledAddonsPath), "addons/disabled/%s", sAddons);
