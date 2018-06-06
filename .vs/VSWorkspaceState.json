@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Oyun Modu Yöneticisi",
+    "\\Oyun Modu Yöneticisi\\addons",
+    "\\Oyun Modu Yöneticisi\\addons\\sourcemod",
+    "\\Oyun Modu Yöneticisi\\addons\\sourcemod\\configs",
+    "\\Sunucu Yönlendirici"
   ],
+  "SelectedNode": "\\Oyun Modu Yöneticisi\\addons\\sourcemod\\configs\\k_oyunmodu_yoneticisi.cfg",
   "PreviewInSolutionExplorer": false
 }

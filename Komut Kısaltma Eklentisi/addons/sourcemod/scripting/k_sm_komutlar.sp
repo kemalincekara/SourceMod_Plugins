@@ -116,8 +116,8 @@ public AdminSoundsMenuHandler(Handle:menu, MenuAction:action, client, param2)
 		else
 			KomutCalistir(client, GetName(client), g_komutGorunumIsim[param2], g_komutUygula[param2]);
 	}
-	else if (action == MenuAction_Cancel)
-		CloseHandle(menu);
+	//else if (action == MenuAction_Cancel)
+	//	CloseHandle(menu);
 }
 
 public Action:KOMUTEKLE(client, args)
